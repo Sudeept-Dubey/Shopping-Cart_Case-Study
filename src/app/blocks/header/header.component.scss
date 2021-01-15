@@ -1,0 +1,30 @@
+a {
+  margin: 2px;
+  cursor: pointer;
+}
+
+.logo {
+  background-image: url("../../../assets/logo.png");
+  height: 50px;
+  width: 50px;
+  vertical-align: middle;
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin: 0px;
+  padding: 0px;
+  margin-right: 0.2em;
+}
+
+.header-spacer {
+  flex: 1 1 auto;
+}
+
+.user-name {
+  display: inline;
+}
+
+@media all and (max-width: 699px) {
+  .user-name {
+    display: none;
+  }
+}

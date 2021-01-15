@@ -1,0 +1,7 @@
+<div style="overflow: hidden">
+    <pm-header (logoutEvent)="logout()" [user]="user$|async"></pm-header>
+
+    <router-outlet></router-outlet>
+
+    <pm-footer></pm-footer>
+</div>

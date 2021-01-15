@@ -1,0 +1,63 @@
+<div style="height:100vh">
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
+        <mat-icon>menu</mat-icon>
+      </button>
+      <a class="logo" [routerLink]="['/']"></a>
+      <span class="pm-title">Product Mart</span>
+
+      <div fxShow="true" fxHide.lt-md="true">
+        <a mat-button routerLink="/home" routerLinkActive="active-link">Home</a>
+      </div>
+      
+      <div fxShow="true" fxHide.lt-md="true">
+        <a mat-button routerLink="/products" routerLinkActive="active-link">Products</a>
+      </div>
+
+      <div fxShow="true" fxHide.lt-md="true">
+        <a mat-button routerLink="/contact-us" routerLinkActive="active-link">Contact Us</a>
+      </div>
+
+      <div fxShow="true" fxHide.lt-md="true">
+        <a mat-button routerLink="/about-us" routerLinkActive="active-link">About Us</a>
+      </div>
+      <span class="header-spacer"></span>
+      <div>
+        <a *ngIf="!user" mat-button routerLink="/auth" routerLinkActive="active-link">
+          <mat-icon>person_outliner</mat-icon>
+          Login
+        </a>
+
+        <a mat-button *ngIf="user" [matMenuTriggerFor]="menu">
+          <mat-icon>account_box</mat-icon>
+          <span class="user-name">
+            <span>Hi</span> <span><strong> {{ user.fullname }}!</strong></span>
+          </span>
+        </a>
+        <mat-menu #menu="matMenu">
+          <button (click)="logoutEvent.emit()" mat-menu-item>logout</button>
+        </mat-menu>
+      </div>
+      <pm-cart-item-count class="header-cart"></pm-cart-item-count>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+
+
+  <mat-sidenav-container fxFlexFill>
+    <mat-sidenav #sidenav>
+      <mat-nav-list>
+
+        <a (click)="sidenav.toggle()" mat-list-item routerLink="/products" routerLinkActive="active-link">Products</a>
+        <a (click)="sidenav.toggle()" mat-list-item routerLink="/home" routerLinkActive="active-link">Home</a>
+        <a (click)="sidenav.toggle()" mat-list-item routerLink="/contact-us" routerLinkActive="active-link">Contact Us</a>
+        <a (click)="sidenav.toggle()" mat-list-item routerLink="/about-us" routerLinkActive="active-link">About Us</a>
+
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content fxFlexFill>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
